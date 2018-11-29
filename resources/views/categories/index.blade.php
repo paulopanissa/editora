@@ -25,7 +25,18 @@
                         <tr>
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
-                            <td>Ações</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('categories.edit', ['category' => $category->id]) }}">Editar</a>
+                                    </li>
+                                    <li>
+                                        {!! Form::open(['route' => ['categories.delete', 'category' => $category->id], 'method' => 'DELETE']) !!}
+                                            {!! Form::submit('Excluir', ['class' => 'btn btn-link']) !!}
+                                        {!! Form::close() !!}
+                                    </li>
+                                </ul>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
